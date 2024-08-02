@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        function processVideo() {
+            document.getElementById("video-form").submit();
+        }
+    </script>
+    <title>Forest Fire Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .custom-file-upload {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+
+        .process-button {
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+
+        .spacer {
+            margin-top: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Forest Fire Detection on Video</h1>
+        <form method="POST" action="/process_video" enctype="multipart/form-data" id="video-form">
+            <label class="custom-file-upload">
+                <input type="file" name="file" id="file-input" accept=".mp4">
+                Select video
+            </label>
+            <div class="spacer"></div>
+            <div class="button-container">
+                <input type="button" value="Process Video" onclick="processVideo()" class="process-button">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

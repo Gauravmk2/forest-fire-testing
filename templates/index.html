@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forest Fire Detection</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #result {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        p {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        #classificationText {
+            color: #04ea13;
+        }
+
+        #fireProbability {
+            color: rgb(0, 0, 0);
+        }
+
+        #normalProbability {
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Forest Fire Detection Image classifier</h1>
+        <div class="form-container">
+            <form method="POST" action="/index" enctype="multipart/form-data">
+                <input type="file" name="image" accept="image/*" required>
+                <input type="submit" value="Classify">
+            </form>
+            {% if classification %}
+                <div id="result">
+                    <h2>Classification: <span id="classificationText">{{ classification }}</span></h2>
+                    <p>Fire Probability: <span id="fireProbability">{{ probability_fire }}%</span></p>
+                    <p>Normal Probability: <span id="normalProbability">{{ probability_normal }}%</span></p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        const resultDiv = document.getElementById('result');
+        const classificationText = document.getElementById('classificationText');
+        if (resultDiv) {
+            resultDiv.style.animation = "fadeIn 1s ease-in";
+        }
+        if (classificationText) {
+            const classification = classificationText.innerText.trim();
+            if (classification === "fire") {
+                classificationText.style.color = 'rgb(232, 93, 7)';
+            } else {
+                classificationText.style.color = '#04ea13';
+            }
+            resultDiv.style.display = 'block';
+        }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</body>
+</html>

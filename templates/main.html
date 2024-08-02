@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("/static/background.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 150px;
+            background-color: rgba(231, 231, 231, 0);
+            border-radius: 0px;
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+        }
+
+        h1 {
+            font-size: 40px;
+            color: #e0e70f;
+        }
+
+        p {
+            font-size: 22px;
+            color: #d3f800;
+        }
+
+        #upload-buttons {
+            margin-top: 34px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 22px;
+            font-size: 20px;
+            background-color: #0081f2;
+            color: #080808;
+            border: red;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #a8db1b;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Forest Fire Detection</h1>
+        <p>Upload an image or video to detect fire:</p>
+
+        <div id="upload-buttons">
+            <a href="http://127.0.0.1:5000/index" class="btn">Upload Image</a>
+            <a href="http://127.0.0.1:5000/video" class="btn">Upload Video</a>
+        </div>
+    </div>
+</body>
+</html>
